@@ -1,4 +1,3 @@
-import datetime
 import streamlit as st
 from google import genai
 
@@ -10,17 +9,12 @@ st.title("🔮 AI 재미있고 쉽게즐기는 AI사주!")
 st.write("생년월일과 시간을 입력하시면 사주전문가가! 명리학적으로 분석해 드립니다.")
 st.markdown("---")
 
-# 3. 사용자 입력 양식
+# 3. 사용자 입력 양식 (텍스트 직접 입력 방식)
 col1, col2 = st.columns(2)
 
 with col1:
-    # 접속 당일 날짜 기본 선택 (1900년부터 선택 가능)
-    birth_date = st.date_input(
-        "생년월일 선택",
-        value=datetime.date.today(),
-        min_value=datetime.date(1900, 1, 1),
-        max_value=datetime.date.today()
-    )
+    # 달력 대신 숫자를 직접 입력받는 창
+    birth_date = st.text_input("생년월일 입력", placeholder="예: 19960515 또는 1996-05-15")
     gender = st.radio("성별", ["남성", "여성"], horizontal=True)
 
 with col2:
@@ -28,13 +22,16 @@ with col2:
     if unknown_time:
         birth_time = "모름"
     else:
-        birth_time = st.time_input("태어난 시간")
+        # 시간도 직접 숫자로 입력받고 싶다면 text_input을 사용 가능합니다.
+        birth_time = st.text_input("태어난 시간 입력", placeholder="예: 07:40 또는 14:30")
 
 st.markdown("---")
 
 # 4. 분석 버튼 클릭 시 동작
 if st.button("✨ 사주 분석 시작하기", use_container_width=True):
-    if "GEMINI_API_KEY" not in st.secrets:
+    if not birth_date:
+        st.warning("생년월일을 입력해 주세요.")
+    elif "GEMINI_API_KEY" not in st.secrets:
         st.error("API 키가 설정되지 않았습니다. Streamlit Secrets 설정을 확인해주세요.")
     else:
         api_key = st.secrets["GEMINI_API_KEY"]
@@ -59,7 +56,7 @@ if st.button("✨ 사주 분석 시작하기", use_container_width=True):
                 """
 
                 response = client.models.generate_content(
-                    model="gemini-3.6-flash",
+                    model="gemini-1.5-flash",
                     contents=prompt,
                 )
 
