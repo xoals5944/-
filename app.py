@@ -5,8 +5,8 @@ from google import genai
 st.set_page_config(page_title="재미있고 쉽게 즐길수있는 AI사주!", page_icon="🔮", layout="centered")
 
 # 2. 웹페이지 제목 및 설명
-st.title("🔮 AI 사주 명리학 분석")
-st.write("생년월일과 시간을 입력하시면 AI 사주 전문가가 명리학적으로 분석해 드립니다.")
+st.title("🔮 AI 재미있고 쉽게즐기는 AI사주!")
+st.write("생년월일과 시간을 입력하시면 사주전문가가! 명리학적으로 분석해 드립니다.")
 st.markdown("---")
 
 # 3. 사용자 입력 양식
