@@ -1,8 +1,9 @@
+import datetime
 import streamlit as st
 from google import genai
 
 # 1. 페이지 기본 설정
-st.set_page_config(page_title="재미있고 쉽게 즐길수있는 AI사주!", page_icon="🔮", layout="centered")
+st.set_page_config(page_title="AI 사주 명리학 분석", page_icon="🔮", layout="centered")
 
 # 2. 웹페이지 제목 및 설명
 st.title("🔮 AI 재미있고 쉽게즐기는 AI사주!")
@@ -13,9 +14,10 @@ st.markdown("---")
 col1, col2 = st.columns(2)
 
 with col1:
+    # 접속 당일 날짜 기본 선택 (1900년부터 선택 가능)
     birth_date = st.date_input(
         "생년월일 선택",
-        value=datetime.date(1996, 5, 15),
+        value=datetime.date.today(),
         min_value=datetime.date(1900, 1, 1),
         max_value=datetime.date.today()
     )
@@ -32,7 +34,6 @@ st.markdown("---")
 
 # 4. 분석 버튼 클릭 시 동작
 if st.button("✨ 사주 분석 시작하기", use_container_width=True):
-    # Secrets에서 API 키 불러오기
     if "GEMINI_API_KEY" not in st.secrets:
         st.error("API 키가 설정되지 않았습니다. Streamlit Secrets 설정을 확인해주세요.")
     else:
