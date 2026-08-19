@@ -2,7 +2,7 @@ import streamlit as st
 from google import genai
 
 # 1. 페이지 기본 설정
-st.set_page_config(page_title="AI 사주 명리학 분석", page_icon="🔮", layout="centered")
+st.set_page_config(page_title="재미있고 쉽게 즐길수있는 AI사주!", page_icon="🔮", layout="centered")
 
 # 2. 웹페이지 제목 및 설명
 st.title("🔮 AI 사주 명리학 분석")
