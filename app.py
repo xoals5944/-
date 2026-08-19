@@ -2,14 +2,16 @@ import streamlit as st
 from google import genai
 
 # 1. 페이지 기본 설정 (타이틀 및 레이아웃)
-st.set_page_config(page_title="AI 재미있고 쉬운 사주풀이", page_icon="🔮", layout="centered")
+st.set_page_config(page_title="AI와 함께하는 재미있고 쉬운 사주풀이", page_icon="🔮", layout="centered")
 
 # 2. 웹페이지 상단 제목 및 안내문
-st.title("🔮 AI 재미있고 쉽게 즐기는 사주!")
+st.title("🔮 AI 재미있고 쉽게 즐겨보는 사주!")
 st.write("생년월일과 시간을 입력하시면 누구나 이해하기 쉽게 사주를 풀어드립니다.")
 st.markdown("---")
 
 # 3. 사용자 입력 양식 (숫자 직접 입력 방식)
+user_name = st.text_input("이름(또는 닉네임) 입력", placeholder="예: 홍길동")
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -93,4 +95,4 @@ if st.button("✨ 쉽고 재미있는 사주 보기", use_container_width=True):
                 st.write(response.text)
 
             except Exception as e:
-                st.error(f"오류가 발생했습니다: {e}")
+                st.error(f"죄송합니다. 현재동시에 많은 사용자가 접속하여 응답이 지연되고 있습니다. 잠시후 다시 [사주보기] 버튼을 눌러주세요!. 감사합니다.: {e}")
