@@ -95,4 +95,4 @@ if st.button("✨ 쉽고 재미있는 사주 보기", use_container_width=True):
                 st.write(response.text)
 
             except Exception as e:
-                st.error(f"죄송합니다. 현재동시에 많은 사용자가 접속하여 응답이 지연되고 있습니다. 잠시후 다시 [사주보기] 버튼을 눌러주세요!. 감사합니다.: {e}")
+                st.error(f"죄송합니다. 현재 동시에 많은 사용자가 접속하여 응답이 지연되고 있습니다. 잠시후 다시 [사주보기] 버튼을 눌러주세요!. 감사합니다.!")
