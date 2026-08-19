@@ -67,9 +67,9 @@ if st.button("✨ 쉽고 재미있는 사주 보기", use_container_width=True):
                    - 일상생활에서 쉽게 실천할 수 있는 현실적이고 따뜻한 조언 2~3가지를 들려주세요.
                 """
 
-                # 안정적이고 빠르게 답해주는 gemini-1.5-flash 모델 적용
+                # 최신 규격 모델 gemini-2.5-flash 적용
                 response = client.models.generate_content(
-                    model="gemini-1.5-flash",
+                    model="gemini-2.5-flash",
                     contents=prompt,
                 )
 
