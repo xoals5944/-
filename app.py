@@ -14,9 +14,10 @@ col1, col2 = st.columns(2)
 
 with col1:
     birth_date = st.date_input(
-    "생년월일 선택",
-    min_value=datetime.date(1900, 1, 1), # 선택 가능한 최소 날짜
-    max_value=datetime.date.today() # 선택 가능한 최대 날짜 (오늘)
+        "생년월일 선택",
+        value=datetime.date(1996, 5, 15),
+        min_value=datetime.date(1900, 1, 1),
+        max_value=datetime.date.today()
     )
     gender = st.radio("성별", ["남성", "여성"], horizontal=True)
 
